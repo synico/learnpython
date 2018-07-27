@@ -25,5 +25,4 @@ if __name__=='__main__':
     c = Circle(4)
     print("Area: %s" % c.area)
     print("Perimeter: %s" % c.perimeter)
-        
-        
+            
