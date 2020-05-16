@@ -17,6 +17,38 @@ def loop2(map):
         print('tuple | key: ', k, ', value: ', v)
 
 
+def loop3(map):
+    it = iter(map)
+    for key in it:
+        print('key: ', key, ' ,value: ', map.get(key))
+
+
+def mapMethod(map):
+    if 1 in map:
+        print('1 is in map')
+    print('---------------key in dict-----------------')
+
+    keys = map.keys()
+    for key in keys:
+        print('key: ', key)
+    print('---------------dict.keys()-----------------')
+
+    items = map.items()
+    for item in items:
+        print('item.key: ', item[0], ', item.value: ', item[1])
+    print('---------------dict.items()-----------------')
+
+    map.setdefault(6, 'six')
+    map.setdefault(4, 'four')
+    print(map.setdefault(8))
+    print(map)
+    print('---------------dict.setdefault(key[, value])-----------------')
+
+    map.update(red=1, blue=2)
+    print(map)
+    print('---------------dict.update(key, value)-----------------')
+
+
 if __name__ == '__main__':
     map = defineMap()
-    loop2(map)
+    mapMethod(map)

@@ -17,7 +17,7 @@ def genAdd():
 
 def genSub():
     result = set()
-    for i in range(5, 50):
+    for i in range(11, 50):
         for j in range(9, 20):
             if(i - j >= 9):
                 result.add(str(i) + " - " + str(j) + " = ")
