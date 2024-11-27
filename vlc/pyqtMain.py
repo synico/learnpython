@@ -1,7 +1,7 @@
 import sys
 import vlc
 from PyQt5.QtWidgets import QApplication, QMainWindow
-import vwyl
+import template.vwyl as vwyl
 
 class VWYLMainWidget(QMainWindow, vwyl.Ui_MainWindow):
     def __init__(self):
