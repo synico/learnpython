@@ -6,9 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 import logging
 from multiprocessing import Process, Manager
 
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 tpExecutor = ThreadPoolExecutor(max_workers=8)
 
 def f(name):
