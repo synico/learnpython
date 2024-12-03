@@ -35,11 +35,14 @@ def sock():
 
 if __name__ == '__main__':
   log.info('start.......')
-  startCapture()
+  # startCapture()
   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   s.bind(socket_addr)
+  s.setblocking(False)
   s.listen()
   while True:
+    log.info('true')
     client_socket, addr = s.accept()
+    log.info(f'new socket connection')
     CONNS.add(client_socket)
   log.info('new socket server has been created')
