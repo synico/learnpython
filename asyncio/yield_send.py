@@ -27,14 +27,36 @@ def coroutine():
 
 def invoke_coroutine():
   coro = coroutine()
-  next(coro)
+  coro.send(None) # equals to 'next(coro)'
   coro.send('Hello')
-  # coro.send('World')
+  coro.send('World')
+
+def func1():
+  print(f'result1')
+  ret = yield from request('http://test.com/foo')
+  print(f'result2 of {ret}')
+  ret = yield from func2(ret)
+  print(f'result3 of {ret}')
+  return ret
+
+def func2(data):
+  print(f'result4 of {data}')
+  result = yield from request('http://test.com/' + data)
+  print(f'result5 of {result}')
+  return result
+
+def request(url):
+  print(f'request from {url}')
+  result = yield "iojob of %s" % url
+  print(f'response to {url}')
+  return result
 
 if __name__=='__main__':
   # asyncio.run(main())
   # invoke_coroutine()
-  coro = coroutine()
-  next(coro)
-  coro.send('Hello')
-  coro.send('World')
+  
+  func = func1()
+  func.send(None)
+  func.send('p1')
+  func.send('p2')
+  func.send('p3')
