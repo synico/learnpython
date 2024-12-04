@@ -1,8 +1,16 @@
-from datetime import datetime
-from websockets.sync.client import connect
+import asyncio
+import logging as log
+
+from websockets.asyncio.client import connect
+
+log.basicConfig(level=log.INFO, format='%(asctime)s - %(levelname)s - (%(filename)s:%(lineno)d) - %(message)s')
+async def receiver():
+  log.info('starting to receive msg')
+  uri = "ws://localhost:19205"
+  async with connect(uri) as websocket:
+    while True:
+      data = await websocket.recv(1024)
+      log.info(f'receive data: {data}')
 
 if __name__ == "__main__":
-  with connect(uri='ws://localhost:19205') as websocket:
-    while True:
-      for msg in websocket:
-        print(f'{datetime.now} msg')
+  asyncio.run(receiver())
